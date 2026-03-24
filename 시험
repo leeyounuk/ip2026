@@ -218,3 +218,68 @@ plt.subplot(2,2,i+1),plt.imshow(images[i],'gray')
 plt.title(titles[i])
 plt.xticks([]),plt.yticks([])
 plt.show()///경계값 알기
+
+
+
+img = cv2.imread('messi5.jpg')
+res = cv2.resize(img,None,fx=2, fy=2, interpolation = cv2.INTER_CUBIC)
+#OR
+height, width = img.shape[:2]
+res = cv2.resize(img,(2*width, 2*height), interpolation = cv2.INTER_CUBIC)
+
+
+
+
+img = cv2.imread('sudokusmall.png')
+rows,cols,ch = img.shape
+pts1 = np.float32([[56,65],[368,52],[28,387],[389,390]])
+pts2 = np.float32([[0,0],[300,0],[0,300],[300,300]])
+M = cv2.getPerspectiveTransform(pts1,pts2)
+dst = cv2.warpPerspective(img,M,(300,300))
+plt.subplot(121),plt.imshow(img),plt.title('Input')
+plt.subplot(122),plt.imshow(dst),plt.title('Output')///마이크로소프트 랜즈
+
+
+img=cv2.imread('opencv_logo.png')
+kernel=np.ones((5,5),np.float32)/25
+dst=cv2.filter2D(img,-1,kernel)
+plt.subplot(121),plt.imshow(img),plt.title('Original')
+plt.xticks([]),plt.yticks([])
+plt.subplot(122),plt.imshow(dst),plt.title('Averaging')
+plt.xticks([]),plt.yticks([])
+plt.show()////스무딩
+
+blur = cv2.blur(img,(5,5))
+plt.subplot(121),plt.imshow(img),plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(122),plt.imshow(blur),plt.title('Blurred')
+plt.xticks([]), plt.yticks([])
+plt.show()///블러
+
+blur = cv2.GaussianBlur(img,(5,5),0)///가우샨블러
+
+median = cv2.medianBlur(img,5)///메디안블러
+
+blur = cv2.bilateralFilter(img,9,75,75)//바이리터럴 필터
+
+모폴로지컬///중요
+1. 다일레이션
+2. 이로이션
+3. 오프닝
+4. 클로징
+
+소벨 오퍼레이션
+케니 엣지
+하이퍼시스 쓰레스홀딩
+
+img = cv2.imread('messi5.jpg',0)
+edges = cv2.Canny(img,100,200)//미니멈, 맥시멈
+plt.subplot(121),plt.imshow(img,cmap = 'gray')
+plt.title('Original Image'), plt.xticks([]), plt.yticks([])
+plt.subplot(122),plt.imshow(edges,cmap = 'gray')
+plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
+plt.show()
+
+퀀터
+img = cv2.drawContours(img, contours,-1, (0,255,0), 3)//요소 의미 알기
+
