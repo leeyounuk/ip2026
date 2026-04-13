@@ -6,4 +6,5 @@ homework2<img src="tracking.gif" width="100%" height="100%" title="QCQI Visualiz
 
 [homework3](https://github.com/leeyounuk/ip2026/blob/main/homework3.ipynb)
 
+homework4<img src="homework4.gif" width="100%" height="100%" title="QCQI Visualization" alt="QCQI Visualization"></img>
 homework5<img src="homework5.gif" width="100%" height="100%" title="QCQI Visualization" alt="QCQI Visualization"></img>
