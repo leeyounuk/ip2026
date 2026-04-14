@@ -2,21 +2,29 @@ edges = cv2.Canny(image, minVal, maxVal[,aperture_size])
 edges = cv2.Canny(gray,150,200,apertureSize=3)
 다음 실행결과를 이용하여 Canny Edge Detection에서 입력변수 minVal, maxVal[,aperture_size] 값들과 non-maximum suppression에 대하여 설명하시오.
 
+minval: minval 미만은 윤곽선으로 인식x
+maxval: maxval 초과시 확실한 윤곽선으로 인식
+aperture_size: 커널 사이즈(n*n)
+
+
 contours, hierarchy = cv2.findContours(closing, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 cnt = contours[9]
 epsilon = 0.01*cv2.arcLength(cnt,True) 
 approx = cv2.approxPolyDP(cnt,epsilon,True)
 다음 실행결과[11,14]를 이용하여 contours[9]에서 9의 의미와 epsilon = 0.01*cv2.arcLength(cnt,True) 값의 효과에 대하여 설명하시오
 
+
 gray = cv2.imread('dsu7.jpg', 0)
 edges = cv2.Canny(gray,150,200,apertureSize=3)
 lines = cv2.HoughLines(edges,1,np.pi/180,100)
 cv2.HoughLines(image, rho, theta, threshold)
- rho : real, [0,1], 의 단위.  값이 1이면 1 pixel 단위로 를 변화시키며 직선을 검출한다. 값이 작아질수록 더 세밀하게 직선을 검출한다.
+
+다음 실행결과를 이용하여 Hough Lines Detection의 역활과 Canny Edge 결과의 중요성 그리고 입력변수 rho, theta, threshold 값들에 대하여 설명하시오.
+
+rho : real, [0,1], 의 단위.  값이 1이면 1 pixel 단위로 를 변화시키며 직선을 검출한다. 값이 작아질수록 더 세밀하게 직선을 검출한다.
  theta : [0, 2), 단위. 값이 /180 이면, 의 탐색 grid를 1 radian 단위로 하여 직선을 검출한다. 따라서 theta 값이 작을수록 더 세밀하게 직선을 검출한다.
  threshold : Hough space에서 직선이라고 정의할 값의 기준. threshold의 값이 작을수록 더 많은 직선을 검출한다.
 
-다음 실행결과를 이용하여 Hough Lines Detection의 역활과 Canny Edge 결과의 중요성 그리고 입력변수 rho, theta, threshold 값들에 대하여 설명하시오.
 
 
 dst = cv2.cornerHarris(gray,2,3,0.04)
