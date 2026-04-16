@@ -12,8 +12,9 @@ cnt = contours[9]
 epsilon = 0.01*cv2.arcLength(cnt,True) 
 approx = cv2.approxPolyDP(cnt,epsilon,True)
 다음 실행결과[11,14]를 이용하여 contours[9]에서 9의 의미와 epsilon = 0.01*cv2.arcLength(cnt,True) 값의 효과에 대하여 설명하시오
-contours[9]: 검출한 컨투어(외곽선 좌표) 중 9번째
-epsilon = 0.01*cv2.arcLength(cnt,True) 값의 효과: 근사 정화도를 정한다(숫자가 내려갈 수록 정확도 수치 올라감)
+contours[9]: 검출한 컨투어(외곽선) 중 9번째
+epsilon = 0.01*cv2.arcLength(cnt,True) epsilon = 최대 허용 거리, contours를 다각형으로 바꾸면서 
+최대허용거리에서 벗어난 점들은 연결하지않음 따라서 epsilon값이 작을수록 원래의 윤곽선과 거의 일치 
 
 gray = cv2.imread('dsu7.jpg', 0)
 edges = cv2.Canny(gray,150,200,apertureSize=3)
